@@ -26,7 +26,6 @@ public class Disciplina {
 	@Column(name = "nm_nome")
 	private String nome;
 
-	@ManyToMany
 	private List<String> cursos;
 	@OneToMany
 	private List<Turma> turmas;
