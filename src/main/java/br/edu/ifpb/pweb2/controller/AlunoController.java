@@ -15,11 +15,6 @@ public class AlunoController implements Serializable {
 	@Inject
 	private AlunoDAO alunoDAO;
 
-	public void excluir(Aluno aluno) {
-		alunoDAO.delete(aluno);
-
-	}
-
 	public List<Aluno> findAll() {
 		return alunoDAO.findAll();
 	}
@@ -31,6 +26,11 @@ public class AlunoController implements Serializable {
 	@Transactional
 	public Aluno insert(Aluno aluno) {
 		return alunoDAO.insert(aluno);
+	}
+	
+	public void excluir(Aluno aluno) {
+		alunoDAO.delete(aluno);
+
 	}
 
 	@Transactional

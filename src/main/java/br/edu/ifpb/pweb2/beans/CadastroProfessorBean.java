@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import br.edu.ifpb.pweb2.controller.ProfessorController;
-import br.edu.ifpb.pweb2.model.Aluno;
 import br.edu.ifpb.pweb2.model.Professor;
 
 public class CadastroProfessorBean extends GenericDiarioBean implements Serializable {
