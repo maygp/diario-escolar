@@ -1,7 +1,7 @@
 package br.edu.ifpb.pweb2.dao;
 
-import br.edu.ifpb.pweb2.model.Aluno;
+import br.edu.ifpb.pweb2.model.Usuario;
 
-public class UsuarioDAO extends GenericDAO<Aluno, Integer> {
+public class UsuarioDAO extends GenericDAO<Usuario, Integer> {
 	private static final long serialVersionUID = 1L;
 }
