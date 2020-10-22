@@ -8,24 +8,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_nota")
+@Table(name = "tb_nota")
 public class Nota {
-	
+
 	@Id
-	@Column(name="nu_id")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="nu_nota")
-    private Integer nota;
-    
-    public Nota(){
-        
-    }
+
+	@Column(name = "nu_nota")
+	private Integer nota;
+
+	public Nota() {
+
+	}
 
 	public Nota(Integer nota) {
 		super();
 		this.nota = nota;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getNota() {
@@ -40,6 +48,5 @@ public class Nota {
 	public String toString() {
 		return "Nota [nota=" + nota + "]";
 	}
-    
-    
+
 }

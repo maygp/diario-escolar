@@ -14,21 +14,21 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="tb_aula")
+@Table(name = "tb_aula")
 public class Aula {
-	
+
 	@Id
-	@Column(name="nu_id")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="nm_assunto")
+
+	@Column(name = "nm_assunto")
 	private String assunto;
-	
-	@Column(name="dt_aula")
+
+	@Column(name = "dt_aula")
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	
+
 	@ManyToMany
 	private List<Aluno> presenca;
 
@@ -40,6 +40,14 @@ public class Aula {
 		super();
 		this.assunto = assunto;
 		this.data = data;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getAssunto() {

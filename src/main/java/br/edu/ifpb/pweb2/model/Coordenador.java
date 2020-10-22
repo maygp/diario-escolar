@@ -12,18 +12,26 @@ import javax.persistence.Table;
 @Table(name = "tb_coordenador")
 public class Coordenador {
 	@Id
-	@Column(name="nu_id")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "bl_situacao")
 	private Boolean ativo;
-	
+
 	@OneToOne
 	private Usuario usuario;
 
 	public Coordenador() {
 
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Boolean getAtivo() {
