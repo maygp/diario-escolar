@@ -20,8 +20,14 @@ public class UsuarioBean extends GenericDiarioBean implements Serializable {
 		String proxPag = null;
 
 		if (this.usuario.getLogin().equals("aluno") && this.usuario.getSenha().equals("123")) {
-			proxPag = "index2";
-		} else {
+			proxPag = "alunos/pagAluno";
+		} else if (this.usuario.getLogin().equals("professor") && this.usuario.getSenha().equals("123")) {
+			proxPag = "pagProf";
+		} else if (this.usuario.getLogin().equals("coordenador") && this.usuario.getSenha().equals("123")) {
+			proxPag = "pagCoordenador";
+		}
+
+		else {
 			FacesMessage m = new FacesMessage("Login inválido");
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage(null, m);
