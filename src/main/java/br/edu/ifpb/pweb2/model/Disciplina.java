@@ -25,7 +25,7 @@ public class Disciplina {
 	@Column(name = "nm_nome")
 	private String nome;
 
-	private List<String> cursos;
+	//private List<String> cursos;
 	@OneToMany
 	private List<Turma> turmas;
 
@@ -33,11 +33,11 @@ public class Disciplina {
 
 	}
 
-	public Disciplina(String nome, String codigo, List<String> cursos) {
+	public Disciplina(String nome, String codigo) {
 		super();
 		this.nome = nome;
 		this.codigo = codigo;
-		this.cursos = cursos;
+		//this.cursos = cursos;
 	}
 
 	public Integer getId() {
@@ -64,13 +64,13 @@ public class Disciplina {
 		this.codigo = codigo;
 	}
 
-	public List<String> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<String> cursos) {
-		this.cursos = cursos;
-	}
+//	public List<String> getCursos() {
+//		return cursos;
+//	}
+//
+//	public void setCursos(List<String> cursos) {
+//		this.cursos = cursos;
+//	}
 
 	public List<Turma> getTurmas() {
 		return turmas;
@@ -86,7 +86,7 @@ public class Disciplina {
 
 	@Override
 	public String toString() {
-		return "Disciplina [nome=" + nome + ", codigo=" + codigo + ", curso=" + cursos + "]";
+		return "Disciplina [nome=" + nome + ", codigo=" + codigo + ", curso=" + "]";
 	}
 
 }

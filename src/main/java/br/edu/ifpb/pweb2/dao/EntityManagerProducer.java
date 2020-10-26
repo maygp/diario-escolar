@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
 @ApplicationScoped
 public class EntityManagerProducer implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("diarioEscolar");
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("diarioescolar");
 
 	@Produces
 	@RequestScoped

@@ -14,10 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tb_turma")
 public class Turma {
-
+	
 	@Id
-	@Column(name="nu_codigo")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(name = "nu_codigo")
 	private String codigo;
 	
 	@ManyToMany
