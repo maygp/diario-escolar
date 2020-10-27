@@ -7,7 +7,7 @@
 
 <f:metadata>
 	<f:viewParam name="id" value="#{cadDisciplina.disciplina.id}"/>
-	<f:viewAction action="#{cadDisciplina.disciplina.init}" />
+	<f:viewAction action="#{cadDisciplina.init}" />
 </f:metadata>
 <h:head>
 	<title>Listagem de disciplinas</title>
@@ -17,25 +17,25 @@
 <h:body>
 
 	<div class="titulo">
-		<i class="fa fa-users icon-space"></i>Consulta disciplinas
+		<i class="fa fa-users icon-space"></i>Listagem disciplinas
 	</div>
 	
-	<p><a href="cadastro.xhtml">Novo disciplina</a></p>
+	<p><a href="cadastro.xhtml">Nova disciplina</a></p>
 	
 	<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
 	
-	<p:panel id="panel" header="disciplinas cadastrados" style="background-color:#ededed">
+	<p:panel id="panel" header="Disciplinas Cadastradas" style="background-color:#ededed">
 	
-		<h:form id="cons-disciplina">
-			<p:commandButton action="#{cadDisciplina.disciplina.excluirSelecionados}" value="Excluir selecionados" icon="fa fa-trash" ajax="false"/>
-			<p:dataTable value="#{cadDisciplina.disciplina.disciplinas}" 
+		<h:form id="list-disciplina">
+			<p:commandButton action="#{cadDisciplina.excluirSelecionados}" value="Excluir selecionadas" icon="fa fa-trash" ajax="false"/>
+			<p:dataTable value="#{cadDisciplina.disciplinas}" 
 				var="disciplina" 
-				emptyMessage="Nenhum disciplina cadastrado"
+				emptyMessage="Nenhuma disciplina cadastrada"
 				rowHover="true">
-				<f:facet name="header">disciplinas</f:facet>
+				<f:facet name="header">Disciplinas</f:facet>
 			
 				<p:column headerText=" " styleClass="columnCenter" style="width:2%">
-					<p:selectBooleanCheckbox value="#{cadDisciplina.disciplina.checked[disciplina.id]}"/>
+					<p:selectBooleanCheckbox value="#{cadDisciplina.checked[disciplina.id]}"/>
 				</p:column>
 			
 				<p:column headerText="Nome da disciplina" styleClass="columnCenter">
@@ -45,12 +45,15 @@
 				
 				<p:column headerText="Nome">
 					#{disciplina.nome}
+                        </p:column>
+                        <p:column headerText="Código">
+					#{disciplina.codigo}
 				</p:column>
 				
 				<p:column headerText="Ações">
-						<p:commandButton action="#{cadDisciplina.disciplina.excluir(disciplina)}" title="Excluir" icon="fa fa-trash" ajax="false"/>
-						<p:commandButton action="#{cadDisciplina.disciplina.editar(disciplina)}" title="Editar" icon="fa fa-edit" ajax="false"/>
-						<p:commandButton action="#{cadDisciplina.disciplina.nome(disciplina)}" title="nome em" icon="fa fa-id-card" ajax="false"/>
+						<p:commandButton action="#{cadDisciplina.excluir(disciplina)}" title="Excluir" icon="fa fa-trash" ajax="false"/>
+						<p:commandButton action="#{cadDisciplina.editar(disciplina)}" title="Editar" icon="fa fa-edit" ajax="false"/>
+						<p:commandButton action="#{cadDisciplina.nome(disciplina)}" title="nome em" icon="fa fa-id-card" ajax="false"/>
 				</p:column>
 			</p:dataTable>
 		</h:form>
