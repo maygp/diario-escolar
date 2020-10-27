@@ -11,7 +11,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifpb.pweb2.controller.AlunoController;
+import br.edu.ifpb.pweb2.controller.DisciplinaController;
 import br.edu.ifpb.pweb2.model.Aluno;
+import br.edu.ifpb.pweb2.model.Disciplina;
 
 @Named(value = "alunoBean")
 @ViewScoped
@@ -20,12 +22,19 @@ public class AlunoBean extends GenericDiarioBean implements Serializable {
 
 	@Inject
 	private Aluno aluno;
+//	@Inject
+//	private Disciplina disciplina;
+
+	private List<Disciplina> disciplinas;
+
 	private List<Aluno> alunos;
 	private Map<Integer, Boolean> checked = new HashMap<Integer, Boolean>();
 	private Integer id;
 
 	@Inject
 	private AlunoController controllerAluno;
+	@Inject
+	private DisciplinaController controllerDisciplina;
 
 	public void init() {
 		if (id == null) {
@@ -49,11 +58,12 @@ public class AlunoBean extends GenericDiarioBean implements Serializable {
 	}
 
 	public String matricular() {
-
+		System.out.println("/////////////////////////////////////////// " + aluno);
 		Integer id = aluno.getId();
 		controllerAluno.saveOrUpdate(aluno);
 
 		this.keepMessages();
+
 		if (id == null) {
 			this.addInfoMessage("Aluno matriculado com sucesso!");
 		} else {
@@ -111,6 +121,16 @@ public class AlunoBean extends GenericDiarioBean implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public List<Disciplina> getDisciplinas() {
+
+		List<Disciplina> disciplinas = controllerDisciplina.findAll();
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 }

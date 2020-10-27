@@ -27,7 +27,7 @@ public class AlunoController implements Serializable {
 	public Aluno insert(Aluno aluno) {
 		return alunoDAO.insert(aluno);
 	}
-	
+
 	public void excluir(Aluno aluno) {
 		alunoDAO.delete(aluno);
 
@@ -42,4 +42,5 @@ public class AlunoController implements Serializable {
 		}
 
 	}
+
 }

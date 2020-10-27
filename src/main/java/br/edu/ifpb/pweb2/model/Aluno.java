@@ -13,30 +13,30 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_aluno")
+@Table(name = "tb_aluno")
 public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="nu_id")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="nm_nome")
+
+	@Column(name = "nm_nome")
 	private String nome;
-	
-	@Column(name="nm_matricula")
+
+	@Column(name = "nm_matricula")
 	private String matricula;
-	
+
 	@ManyToMany
 	private List<Disciplina> disciplinas;
-	
+
 	@ManyToMany
 	private List<Nota> notas;
-	
+
 	@ManyToMany
 	private List<Aula> presencas;
-	
+
 	@OneToOne
 	private Usuario usuario;
 
@@ -75,12 +75,12 @@ public class Aluno implements Serializable {
 		this.matricula = matricula;
 	}
 
-	public List<Disciplina> getDisciplina() {
+	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplina(List<Disciplina> disciplina) {
-		this.disciplinas = disciplina;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 	public List<Nota> getNota() {
@@ -106,6 +106,7 @@ public class Aluno implements Serializable {
 	public List<Aula> getPresencas() {
 		return presencas;
 	}
+
 
 	@Override
 	public String toString() {

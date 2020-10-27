@@ -1,6 +1,7 @@
 package br.edu.ifpb.pweb2.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +23,9 @@ public class DisciplinaBean extends GenericDiarioBean implements Serializable {
 	private Disciplina disciplina;
 
 	private List<Disciplina> disciplinas;
-	private String[] disciplinasSelecionadas;
 
 	private Map<Integer, Boolean> checked = new HashMap<Integer, Boolean>();
+
 	private Integer id;
 
 	@Inject
@@ -39,6 +40,7 @@ public class DisciplinaBean extends GenericDiarioBean implements Serializable {
 	}
 
 	public String cadastrar() {
+
 		Integer id = disciplina.getId();
 		controllerDisciplina.saveOrUpdate(disciplina);
 
@@ -61,7 +63,12 @@ public class DisciplinaBean extends GenericDiarioBean implements Serializable {
 	}
 
 	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
+		List<Disciplina> listDisciplinas = new ArrayList<Disciplina>();
+		disciplinas = controllerDisciplina.findAll();
+		for(int i = 0 ; i < disciplinas.size(); i++){
+			listDisciplinas.add(disciplinas.get(i));
+	 }
+		return listDisciplinas;
 	}
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
@@ -101,14 +108,6 @@ public class DisciplinaBean extends GenericDiarioBean implements Serializable {
 
 	}
 
-	public String[] getDisciplinasSelecionadas() {
-		return disciplinasSelecionadas;
-	}
-
-	public void setDisciplinasSelecionadas(String[] disciplinasSelecionadas) {
-		this.disciplinasSelecionadas = disciplinasSelecionadas;
-	}
-
 	public Map<Integer, Boolean> getChecked() {
 		return checked;
 	}
@@ -124,5 +123,6 @@ public class DisciplinaBean extends GenericDiarioBean implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 
 }

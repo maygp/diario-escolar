@@ -80,7 +80,7 @@ public class Disciplina implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Disciplina [nome=" + nome + ", codigo=" + codigo;
+		return nome;
 	}
 
 }
