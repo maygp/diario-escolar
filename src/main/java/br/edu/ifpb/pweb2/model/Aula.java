@@ -1,5 +1,6 @@
 package br.edu.ifpb.pweb2.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_aula")
-public class Aula {
+public class Aula implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "nu_id")

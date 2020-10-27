@@ -41,4 +41,6 @@ public class DisciplinaController implements Serializable {
 			disciplinaDAO.insert(disciplina);
 		}
 	}
+
+
 }

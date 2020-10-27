@@ -6,11 +6,52 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>teste</title>
+	<title>Cadastro de Disciplina</title>
 	<h:outputStylesheet library="css" name="estilo.css" target="head" />
 	<h:outputScript library="js" name="jsfprime.js" target="head" />
 </h:head>
 <h:body>
-<h3>Bem vindo, coordenador.</h3>
+
+	<div class="titulo">
+		<i class="fa fa-user icon-space"></i>Cadastro da Disciplina
+	</div>
+
+	<p:messages closable="true" errorStyle="color:red"
+		infoStyle="color:green" layout="table" />
+
+	<p:panel id="panel" header="Formulário de cadastro"
+		style="background-color:#ededed">
+
+		<p:focus context="panel" />
+		<h:form id="cad-disciplina">
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-3">
+					<p:outputLabel value="Nome:" for="nome" />
+					<br />
+					<p:inputText value="#{cadDisciplina.disciplina.nome}" id="nome"
+						required="true" requiredMessage="Nome é obrigatório!">
+					</p:inputText>
+					<p:tooltip for="nome" value="Informe o nome sem pontos ou traços"
+						position="bottom"></p:tooltip>
+				</div>
+				<div class="ui-g-3">
+					<p:outputLabel value="Código:" for="codigo" />
+					<p:inputText value="#{cadDisciplina.disciplina.codigo}" id="codigo"
+						required="true"
+						requiredMessage="Código da disciplina é obrigatório!" />
+				</div>
+			</div>
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-2">
+					<p:commandButton action="#{cadDisciplina.cadastrar}"
+						value="Cadastrar" ajax="false" />
+				</div>
+			</div>
+		</h:form>
+	</p:panel>
+	<p:link outcome="listagemDisciplinas" value=" | Listagem de disciplinas">
+		<f:param name="disciplina" value="10" />
+	</p:link>
+
 </h:body>
 </html>

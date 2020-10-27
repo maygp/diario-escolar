@@ -1,5 +1,6 @@
 package br.edu.ifpb.pweb2.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,16 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="tb_turma")
-public class Turma {
+@Table(name = "tb_turma")
+public class Turma implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="nu_codigo")
+	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@Column(name = "nu_codigo")
 	private String codigo;
-	
+
 	@ManyToMany
 	private List<Disciplina> disciplinas;
 	@ManyToMany

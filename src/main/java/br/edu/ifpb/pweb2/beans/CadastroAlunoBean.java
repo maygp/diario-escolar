@@ -1,6 +1,5 @@
 package br.edu.ifpb.pweb2.beans;
 
-
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -13,19 +12,15 @@ import br.edu.ifpb.pweb2.model.Aluno;
 
 @Named(value = "cadAlunoBean")
 @ViewScoped
-public class CadastroAlunoBean extends GenericDiarioBean implements Serializable{
+public class CadastroAlunoBean extends GenericDiarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-//	@Inject
+
+	@Inject
 	private Aluno aluno;
-	
-//	@Inject
+
+	@Inject
 	private AlunoController controllerAluno;
 
-	/*
-	 * @Inject private CursoController controllerCurso;
-	 */
-	
 	@PostConstruct
 	public void init() {
 		Aluno alunoFlash = (Aluno) this.getFlash("aluno");
@@ -33,31 +28,26 @@ public class CadastroAlunoBean extends GenericDiarioBean implements Serializable
 			this.aluno = alunoFlash;
 		}
 	}
-	
+
 	public String cadastrar() {
 		// Usa o dao para inserir o aluno
 		Integer id = aluno.getId();
 		controllerAluno.saveOrUpdate(aluno);
-		
+
 		this.keepMessages();
 		if (id == null) {
 			this.addInfoMessage("Aluno cadatrado com sucesso!");
 		} else {
 			this.addInfoMessage("Aluno atualizado com sucesso!");
 		}
-		
+
 		// Limpa objeto do formulário
 		aluno = new Aluno();
-		
+
 		// Retorna para mesma página
-		return "consulta?faces-redirect=true";
+		return "cadDisciplinas?faces-redirect=true";
 	}
 
-//	/*
-//	 * public List<Curso> getCursoItems() { List<Curso> cursos =
-//	 * controllerCurso.findAll(); return cursos; }
-//	 */
-	
 	public Aluno getAluno() {
 		return aluno;
 	}

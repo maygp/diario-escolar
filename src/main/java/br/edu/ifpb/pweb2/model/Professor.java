@@ -82,13 +82,13 @@ public class Professor extends Usuario implements Serializable {
 		this.isCoordenador = isCoordenador;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
 
 	@Override
 	public String toString() {

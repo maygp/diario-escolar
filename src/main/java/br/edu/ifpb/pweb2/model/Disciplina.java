@@ -1,5 +1,6 @@
 package br.edu.ifpb.pweb2.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,10 +13,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_disciplina")
-public class Disciplina {
+public class Disciplina implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "nu_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
@@ -25,7 +28,7 @@ public class Disciplina {
 	@Column(name = "nm_nome")
 	private String nome;
 
-	private List<String> cursos;
+//	private List<String> cursos;
 	@OneToMany
 	private List<Turma> turmas;
 
@@ -33,11 +36,10 @@ public class Disciplina {
 
 	}
 
-	public Disciplina(String nome, String codigo, List<String> cursos) {
+	public Disciplina(String nome, String codigo) {
 		super();
 		this.nome = nome;
 		this.codigo = codigo;
-		this.cursos = cursos;
 	}
 
 	public Integer getId() {
@@ -64,14 +66,6 @@ public class Disciplina {
 		this.codigo = codigo;
 	}
 
-	public List<String> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<String> cursos) {
-		this.cursos = cursos;
-	}
-
 	public List<Turma> getTurmas() {
 		return turmas;
 	}
@@ -86,7 +80,7 @@ public class Disciplina {
 
 	@Override
 	public String toString() {
-		return "Disciplina [nome=" + nome + ", codigo=" + codigo + ", curso=" + cursos + "]";
+		return "Disciplina [nome=" + nome + ", codigo=" + codigo;
 	}
 
 }

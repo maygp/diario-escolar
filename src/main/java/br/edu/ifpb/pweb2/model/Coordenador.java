@@ -1,5 +1,7 @@
 package br.edu.ifpb.pweb2.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_coordenador")
-public class Coordenador {
+public class Coordenador implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "nu_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
