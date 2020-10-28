@@ -1,6 +1,6 @@
 # Diario Escolar
 
-Projeto da disciplina de Programação para Web II do curso de Sistemas para Internet do IFPB. 
+Projeto de JSF da disciplina de Programação para Web II do curso de Sistemas para Internet do IFPB. 
 
 `Equipe TKM: Karoline Lima, Mayara Pereira e Taysa Mendes`
 
