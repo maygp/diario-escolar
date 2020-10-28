@@ -11,15 +11,16 @@
 	<h:outputScript library="js" name="jsfprime.js" target="head" />
 </h:head>
 <h:body>
-	<h:form>            
+	<h:form>
 		<h3 style="margin-top: 0">Assunto:</h3>
 		<p:inputTextarea value="#{aulaBean.aula.assunto}" rows="10" cols="50" completeMethod="#{inputTextareaView.completeArea}" queryDelay="750" minQueryLength="4">
 		   <p:ajax event="itemSelect" listener="#{inputTextareaView.onSelect}" />
 		</p:inputTextarea>
 		<p:outputLabel for="button" value="Data da aula:" />
 		<p:calendar id="button" value="#{aulaBean.aula.data}" showOn="button" />
-		<p><h:commandButton id="btRegistrar" value="Registrar aula" action="#{aulaBean.registrar}"/></p>
-
 	</h:form>
+	<p:linkButton outcome="registrar" value="Registrar Aula" style="margin-right:20px;">
+    <f:param name="aula" value="aula" />
+</p:linkButton>
 </h:body>
 </html>

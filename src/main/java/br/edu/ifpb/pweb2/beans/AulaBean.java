@@ -1,6 +1,7 @@
 package br.edu.ifpb.pweb2.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,7 +9,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifpb.pweb2.controller.AlunoController;
 import br.edu.ifpb.pweb2.controller.AulaController;
+import br.edu.ifpb.pweb2.model.Aluno;
 import br.edu.ifpb.pweb2.model.Aula;
 
 @Named(value = "aulaBean")
@@ -19,10 +22,16 @@ public class AulaBean extends GenericDiarioBean implements Serializable {
 	@Inject
 	private Aula aula;
 	@Inject
+	private Aluno aluno;
+	@Inject
+	private AlunoController controllerAluno;
+
+	@Inject
 	private AulaController controllerAula;
 	private List<Aula> aulas;
 
-	private List<Aula> presencas;
+	private List<Aluno> alunos;
+
 	private Integer id;
 
 	public void init() {
@@ -80,12 +89,25 @@ public class AulaBean extends GenericDiarioBean implements Serializable {
 		this.aulas = aulas;
 	}
 
-	public List<Aula> getPresencas() {
-		return presencas;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setPresencas(List<Aula> presencas) {
-		this.presencas = presencas;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public List<Aluno> getAlunos() {
+		List<Aluno> listAlunos = new ArrayList<Aluno>();
+		alunos = controllerAluno.findAll();
+		for (int i = 0; i < alunos.size(); i++) {
+			listAlunos.add(alunos.get(i));
+		}
+		return listAlunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	public Integer getId() {
@@ -95,7 +117,5 @@ public class AulaBean extends GenericDiarioBean implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
 
 }
