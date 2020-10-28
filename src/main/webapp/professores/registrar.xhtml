@@ -31,27 +31,21 @@
 				emptyMessage="Nenhum aluno cadastrado"
 				rowHover="true">
 				<f:facet name="header">Alunos</f:facet>
-			
-				<p:column headerText=" " styleClass="columnCenter" style="width:2%">
-					<p:selectBooleanCheckbox value="#{aulaBean.checked[alunos.id]}"/>
-				</p:column>
+
 			
 				<p:column headerText="Alunos" styleClass=" columnCenter">
 					<h:outputText value="#{alunos.nome}" id="_nome"/>
 					<p:tooltip for="_nome" value="#{alunos.id}" position="bottom"/>
 				</p:column>
 				
-				<p:column headerText="Nome">
-					#{aluno.nome}
-                        </p:column>
-                        <p:column headerText="Código">
-					#{aluno.matricula}
+                        <p:column headerText="Matrícula">
+					#{alunos.matricula}
 				</p:column>
 				
 				<p:column headerText="Ações">
-						<p:commandButton action="#{aulaBean.excluir(alunos)}" title="Excluir" icon="fa fa-trash" ajax="false"/>
+						<p:commandButton action="#{aulaBean.excluirAluno(alunos)}" title="Excluir" icon="fa fa-trash" ajax="false"/>
 						<p:commandButton action="#{aulaBean.editar(alunos)}" title="Editar" icon="fa fa-edit" ajax="false"/>
-						<p:commandButton action="#{aulaBean.nome(alunos)}" title="nome em" icon="fa fa-id-card" ajax="false"/>
+						<p:commandButton action="#{aulaBean.registrarNota(alunos)}" title="registrar nota" icon="fa fa-id-card" ajax="false"/>
 				</p:column>
 			</p:dataTable>
 		</h:form>

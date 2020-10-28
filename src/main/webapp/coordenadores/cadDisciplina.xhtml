@@ -11,16 +11,40 @@
 	<h:outputScript library="js" name="jsfprime.js" target="head" />
 </h:head>
 <h:body>
+	<p:menubar>
+		<p:menuitem value="Home" outcome="pagCoordenador" icon="fa fa-home" />
+		<p:submenu label="Disciplinas" icon="fa fa-file-text-o">
+			<p:menuitem value=" Adicionar Disciplina" outcome="cadDisciplina"
+				icon="fa fa-plus" />
+			<p:menuitem value=" Editar Disciplina" url="#"
+				icon="fa fa-pencil-square-o" />
+			<p:menuitem value=" Listar Disciplinas" outcome="listagemDisciplinas"
+				icon="fa fa-list" />
+		</p:submenu>
 
-	<div class="titulo">
-		<i class="fa fa-user icon-space"></i>Cadastro da Disciplina
-	</div>
+		<p:submenu label="Alunos" icon="fa fa-users">
+			<p:menuitem value="Matricular Aluno" outcome="cadAluno"
+				icon="fa fa-user-plus" />
+			<p:menuitem value="Editar Aluno" url="#" icon="fa fa-pencil" />
+			<p:menuitem value="Listar Alunos" outcome="listagemAluno"
+				icon="fa fa-list" />
+		</p:submenu>
 
+		<p:submenu label="Professor" icon="fa fa-user">
+			<p:menuitem value=" Adicionar Professor" url="#"
+				icon="fa fa-user-plus" />
+			<p:menuitem value=" Editar Professor" url="#" icon="fa fa-pencil" />
+			<p:menuitem value=" Listar Professores" url="#" icon="fa fa-list" />
+		</p:submenu>
+		<f:facet name="options">
+			<p:commandButton type="button" value="Logout" outcome="../index"
+				icon="fa fa-sign-out" />
+		</f:facet>
+	</p:menubar>
 	<p:messages closable="true" errorStyle="color:red"
 		infoStyle="color:green" layout="table" />
 
-	<p:panel id="panel" header="Formulário de cadastro"
-		style="background-color:#ededed">
+	<p:panel id="panel" header="Cadastro de Disciplinas">
 
 		<p:focus context="panel" />
 		<h:form id="cad-disciplina">
@@ -42,6 +66,10 @@
 				</div>
 			</div>
 			<div class="ui-g ui-fluid">
+				<div class="ui-g-2">
+					<p:commandButton outcome="pagCoordenador" value="Voltar"
+						icon="fa fa-arrow-left" />
+				</div>
 				<div class="ui-g-2">
 					<p:commandButton action="#{cadDisciplina.cadastrar}"
 						value="Cadastrar" ajax="false" />

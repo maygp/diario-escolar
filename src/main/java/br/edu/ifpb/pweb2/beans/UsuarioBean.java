@@ -2,14 +2,14 @@ package br.edu.ifpb.pweb2.beans;
 
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import br.edu.ifpb.pweb2.model.Usuario;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class UsuarioBean extends GenericDiarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +39,11 @@ public class UsuarioBean extends GenericDiarioBean implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 }

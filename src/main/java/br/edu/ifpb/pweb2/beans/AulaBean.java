@@ -60,6 +60,17 @@ public class AulaBean extends GenericDiarioBean implements Serializable {
 		return "consulta?faces-redirect=true";
 	}
 
+	public String excluirAluno(Aluno aluno) {
+		controllerAluno.excluir(aluno);
+		this.addInfoMessage("Aluno excluído com sucesso!");
+		this.init();
+		return null;
+	}
+
+	public String registrarPresenca() {
+		return "registrar";
+	}
+
 	public String editar(Aula aula) {
 		this.putFlash("aula", aula);
 		return "cadastro?faces-redirect=true";

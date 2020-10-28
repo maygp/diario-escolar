@@ -11,32 +11,43 @@
 	<h:outputScript library="js" name="jsfprime.js" target="head" />
 </h:head>
 <h:body>
-	<h:form>  
-	<div class="titulo">
-		<i class="fa fa-user icon-space fa"> </i> Área do Coordenador.
-	</div>
-    <p:growl id="messages"/>
- 
-    <p:menubar>
-        <p:menuitem value="Home" url="#" icon="fa fa-home"/>
-        <p:submenu label="Professor" icon="fa fa-user">
-            <p:menuitem value=" Adicionar Professor" url="#" icon="fa fa-user-plus" />
-            <p:menuitem value=" Editar Professor" url="#" icon="fa fa-pencil" />
-            <p:menuitem value=" Listar Professores" url="#" icon="fa fa-list" />
-        </p:submenu>
- 
-        <p:submenu label="Disciplinas" icon="fa fa-file-text-o">
-            <p:menuitem value=" Adicionar Disciplina" outcome="cadDisciplina" icon="fa fa-plus" />
-            <p:menuitem value=" Editar Disciplina" url="#" icon="fa fa-pencil-square-o" />
-            <p:menuitem value=" Listar Disciplinas" outcome="listagemDisciplinas" icon="fa fa-list" />
-        </p:submenu>
- 
-        <p:submenu label="Alunos" icon="fa fa-users">
-        	<p:menuitem value="Adicionar Aluno" outcome="cadAluno" icon="fa fa-user-plus" />
-            <p:menuitem value="Editar Aluno" url="#" icon="fa fa-pencil" />
-            <p:menuitem value="Listar Alunos" url="#" icon="fa fa-list" />
-        </p:submenu>
-    </p:menubar>
+	<h:form>
+		<div class="titulo">
+			<i class="fa fa-user icon-space fa"> </i> Área do Coordenador.
+		</div>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Home" url="#" icon="fa fa-home" />
+
+
+			<p:submenu label="Disciplinas" icon="fa fa-file-text-o">
+				<p:menuitem value=" Adicionar Disciplina" outcome="cadDisciplina"
+					icon="fa fa-plus" />
+				<p:menuitem value=" Editar Disciplina" url="#"
+					icon="fa fa-pencil-square-o" />
+				<p:menuitem value=" Listar Disciplinas"
+					outcome="listagemDisciplinas" icon="fa fa-list" />
+			</p:submenu>
+
+			<p:submenu label="Alunos" icon="fa fa-users">
+				<p:menuitem value="Matricular Aluno" outcome="cadAluno"
+					icon="fa fa-user-plus" />
+				<p:menuitem value="Editar Aluno" url="#" icon="fa fa-pencil" />
+				<p:menuitem value="Listar Alunos" outcome="listagemAluno" icon="fa fa-list" />
+			</p:submenu>
+
+			<p:submenu label="Professor" icon="fa fa-user">
+				<p:menuitem value=" Adicionar Professor" url="#"
+					icon="fa fa-user-plus" />
+				<p:menuitem value=" Editar Professor" url="#" icon="fa fa-pencil" />
+				<p:menuitem value=" Listar Professores" url="#" icon="fa fa-list" />
+			</p:submenu>
+			<f:facet name="options">
+				<p:commandButton type="button" value="Logout"
+					action="#{UsuarioBean.logout}" icon="fa fa-sign-out" />
+			</f:facet>
+		</p:menubar>
 	</h:form>
-	</h:body>
+</h:body>
 </html>

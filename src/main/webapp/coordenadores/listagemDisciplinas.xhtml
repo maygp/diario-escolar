@@ -6,57 +6,83 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-	<f:viewParam name="id" value="#{cadDisciplina.disciplina.id}"/>
+	<f:viewParam name="id" value="#{cadDisciplina.disciplina.id}" />
 	<f:viewAction action="#{cadDisciplina.init}" />
 </f:metadata>
 <h:head>
 	<title>Listagem de disciplinas</title>
-	<h:outputStylesheet library="css" name="estilo.css" target="head"/>
-	<h:outputScript library="js" name="jsfprime.js" target="head"/>
+	<h:outputStylesheet library="css" name="estilo.css" target="head" />
+	<h:outputScript library="js" name="jsfprime.js" target="head" />
 </h:head>
 <h:body>
+	<p:menubar>
+		<p:menuitem value="Home" outcome="pagCoordenador" icon="fa fa-home" />
+		<p:submenu label="Disciplinas" icon="fa fa-file-text-o">
+			<p:menuitem value=" Adicionar Disciplina" outcome="cadDisciplina"
+				icon="fa fa-plus" />
+			<p:menuitem value=" Editar Disciplina" url="#"
+				icon="fa fa-pencil-square-o" />
+			<p:menuitem value=" Listar Disciplinas" outcome="listagemDisciplinas"
+				icon="fa fa-list" />
+		</p:submenu>
 
-	<div class="titulo">
-		<i class="fa fa-users icon-space"></i>Listagem disciplinas
-	</div>
-	
-	<p><a href="cadastro.xhtml">Nova disciplina</a></p>
-	
-	<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
-	
-	<p:panel id="panel" header="Disciplinas Cadastradas" style="background-color:#ededed">
-	
+		<p:submenu label="Alunos" icon="fa fa-users">
+			<p:menuitem value="Matricular Aluno" outcome="cadAluno"
+				icon="fa fa-user-plus" />
+			<p:menuitem value="Editar Aluno" url="#" icon="fa fa-pencil" />
+			<p:menuitem value="Listar Alunos" outcome="listagemAluno"
+				icon="fa fa-list" />
+		</p:submenu>
+
+		<p:submenu label="Professor" icon="fa fa-user">
+			<p:menuitem value=" Adicionar Professor" url="#"
+				icon="fa fa-user-plus" />
+			<p:menuitem value=" Editar Professor" url="#" icon="fa fa-pencil" />
+			<p:menuitem value=" Listar Professores" url="#" icon="fa fa-list" />
+		</p:submenu>
+		<f:facet name="options">
+			<p:commandButton type="button" value="Logout" outcome="../index"
+				icon="fa fa-sign-out" />
+		</f:facet>
+	</p:menubar>
+	<p:messages closable="true" errorStyle="color:red"
+		infoStyle="color:green" layout="table" />
+
+	<p:panel id="panel" header="Disciplinas Cadastradas">
+
 		<h:form id="list-disciplina">
-			<p:commandButton action="#{cadDisciplina.excluirSelecionados}" value="Excluir selecionadas" icon="fa fa-trash" ajax="false"/>
-			<p:dataTable value="#{cadDisciplina.disciplinas}" 
-				var="disciplina" 
-				emptyMessage="Nenhuma disciplina cadastrada"
-				rowHover="true">
+			<p:commandButton action="#{cadDisciplina.excluirSelecionados}"
+				value="Excluir selecionadas" icon="fa fa-trash" ajax="false" />
+			<p:dataTable value="#{cadDisciplina.disciplinas}" var="disciplina"
+				emptyMessage="Nenhuma disciplina cadastrada" rowHover="true">
 				<f:facet name="header">Disciplinas</f:facet>
-			
+
 				<p:column headerText=" " styleClass="columnCenter" style="width:2%">
-					<p:selectBooleanCheckbox value="#{cadDisciplina.checked[disciplina.id]}"/>
+					<p:selectBooleanCheckbox
+						value="#{cadDisciplina.checked[disciplina.id]}" />
 				</p:column>
-			
+
 				<p:column headerText="Nome da disciplina" styleClass="columnCenter">
-					<h:outputText value="#{disciplina.nome}" id="_nome"/>
-					<p:tooltip for="_nome" value="#{disciplina.id}" position="bottom"/>
+					<h:outputText value="#{disciplina.nome}" id="_nome" />
+					<p:tooltip for="_nome" value="#{disciplina.id}" position="bottom" />
 				</p:column>
-				
-				<p:column headerText="Nome">
-					#{disciplina.nome}
-                        </p:column>
-                        <p:column headerText="Código">
+
+				<p:column headerText="Código">
 					#{disciplina.codigo}
 				</p:column>
-				
+
 				<p:column headerText="Ações">
-						<p:commandButton action="#{cadDisciplina.excluir(disciplina)}" title="Excluir" icon="fa fa-trash" ajax="false"/>
-						<p:commandButton action="#{cadDisciplina.editar(disciplina)}" title="Editar" icon="fa fa-edit" ajax="false"/>
-						<p:commandButton action="#{cadDisciplina.nome(disciplina)}" title="nome em" icon="fa fa-id-card" ajax="false"/>
+					<p:commandButton action="#{cadDisciplina.excluir(disciplina)}"
+						title="Excluir" icon="fa fa-trash" ajax="false" />
+					<p:commandButton action="#{cadDisciplina.editar(disciplina)}"
+						title="Editar" icon="fa fa-edit" ajax="false" />
+					<p:commandButton action="#{cadDisciplina.nome(disciplina)}"
+						title="nome em" icon="fa fa-id-card" ajax="false" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
 	</p:panel>
+	<p:commandButton title="Adicionar" value="Nova Disciplina"
+		outcome="cadDisciplina" icon="fa fa-plus" />
 </h:body>
 </html>
